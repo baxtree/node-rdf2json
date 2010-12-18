@@ -10,20 +10,23 @@ Add node-rdf2json module to your require path:
 
 Generate JSON based on a URL:
 
-	rdf2json.rdf2json.convertURLIntoRDFJSON(url, format, function(err, json){
-		...
+	rdf2json.rdf2json.convertURLIntoRDFJSON(url, format, function(err, rdfjson){
+		var obj = eval("(" + rdfjson + ")");
+		sys.puts(sys.inspect(obj));
 	});
 
 Generate JSON from an RDF file:
 
-	rdf2json.convertFileIntoRDFJSON(filepath, format, function(err, json){
-		...
+	rdf2json.convertFileIntoRDFJSON(filepath, format, function(err, rdfjson){
+		var obj = eval("(" + rdfjson + ")");
+		sys.puts(sys.inspect(obj));
 	});
 
 Generate JSON from a RDF string:
 
-	rdf2json.convertStringIntoRDFJSON(str, format, function(err, json){
-		...
+	rdf2json.convertStringIntoRDFJSON(str, format, function(err, rdfjson){
+		var obj = eval("(" + rdfjson + ")");
+		sys.puts(sys.inspect(obj));
 	});
 
 #Supported RDF/JSON formats
@@ -34,7 +37,7 @@ As the time of the last release, there is no "standard" mapping between RDF and 
 
 example: 	
 	
-	rdf2json.convertFileIntoRDFJSON("../wine.rdf", "flat", function(err, rdfjson){
+	rdf2json.convertFileIntoRDFJSON("./test/wine.rdf", "flat", function(err, rdfjson){
 		// do something with rdfjson
 	});
 
@@ -58,7 +61,7 @@ exmaple:
 	   	"		<!ENTITY owl  \"http://www.w3.org/2002/07/owl#\" >" +
 	   	"		<!ENTITY xsd  \"http://www.w3.org/2001/XMLSchema#\" >" +
 	   	"]>" +
-		"..." +
+		...
 		"</rdf:RDF>", "talis", function(err, rdfjson){
 		// do something with rdfjson
 	});
