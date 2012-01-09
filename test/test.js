@@ -1,5 +1,6 @@
 var rdf2json = require("../lib/rdf2json");
 var jsunit = require("mjsunit");
+var sys = require("sys");
 
 function testConvertStringIntoRDFJSON(){
 	rdf2json.convertStringIntoRDFJSON("" +
@@ -33,6 +34,7 @@ function testConvertStringIntoRDFJSON(){
 			"		<rdfs:label>Wine Ontology</rdfs:label>" +
 			"	</owl:Ontology>" +
 			"</rdf:RDF>", "flat", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated flat RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The flat RDF/JSON object should not be null", jsonobj);
@@ -87,6 +89,7 @@ function testConvertStringIntoRDFJSON(){
 			"		<rdfs:label>Wine Ontology</rdfs:label>" +
 			"	</owl:Ontology>" +
 			"</rdf:RDF>", "sparql", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated SPARQL RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The SPARQL RDF/JSON object should not be null", jsonobj);
@@ -95,6 +98,7 @@ function testConvertStringIntoRDFJSON(){
 
 function testConvertFileIntoRDFJSON(){
 	rdf2json.convertFileIntoRDFJSON("../wine.rdf", "sparql", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated SPARQL RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The SPARQL RDF/JSON object should not be null", jsonobj);
@@ -141,6 +145,7 @@ function testConvertStringIntoRDFJSON(){
 			"		<rdfs:label>Wine Ontology</rdfs:label>" +
 			"	</owl:Ontology>" +
 			"</rdf:RDF>", "talis", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated Talis RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The Talis RDF/JSON object should not be null", jsonobj);
@@ -149,6 +154,7 @@ function testConvertStringIntoRDFJSON(){
 
 function testConvertFileIntoRDFJSON(){
 	rdf2json.convertFileIntoRDFJSON("../wine.rdf", "talis", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated Talis RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The Talis RDF/JSON object should not be null", jsonobj);
@@ -157,6 +163,7 @@ function testConvertFileIntoRDFJSON(){
 
 function testConvertURLIntoRDFJSON(){
 	rdf2json.convertURLIntoRDFJSON("http://www.w3.org/TR/owl-guide/wine.rdf", "talis", function(err, rdfjson){
+        if(err) sys.puts("Something wrong here ...");
 		jsunit.assertNotNull("The generated Talis RDF/JSON string should not be null", rdfjson);
 		var jsonobj = eval("("+ rdfjson +")");
 		jsunit.assertNotNull("The Talis RDF/JSON object should not be null", jsonobj);
