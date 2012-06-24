@@ -1,15 +1,15 @@
 var rdf2json = require("../lib/rdf2json");
-var sys = require("sys");
+var util = require('util');
 rdf2json.convertFileIntoRDFJSON("./test/wine.rdf", "flat", function(err, rdfjson){
-    if(err) sys.puts("Something wrong here ...");
+    if(err) util.puts("Something wrong here ...");
 	var obj = eval("("+ rdfjson +")");
-	sys.puts(JSON.stringify(obj));
+	util.puts(JSON.stringify(obj));
 });
 
 rdf2json.convertURLIntoRDFJSON("http://www.w3.org/TR/owl-guide/wine.rdf", "sparql", function(err, rdfjson){
-	if(err) sys.puts("Something wrong here ...");
+	if(err) util.puts("Something wrong here ...");
     var obj = eval("("+ rdfjson +")");
-	sys.puts(JSON.stringify(obj));
+	util.puts(JSON.stringify(obj));
 });
 
 rdf2json.convertStringIntoRDFJSON("" +
@@ -44,5 +44,5 @@ rdf2json.convertStringIntoRDFJSON("" +
 	"	</owl:Ontology>" +
 	"</rdf:RDF>", "talis", function(err, rdfjson){
 		var obj = eval("("+ rdfjson +")");
-		sys.puts(JSON.stringify(obj));
+		util.puts(JSON.stringify(obj));
 });
